@@ -1,0 +1,75 @@
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoca ve Ders Bilgileri</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+  
+      .button {
+        background-color: #4caf50; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+
+    
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #55ff00;
+        border-radius: 10px;
+        background-color: #5cf5570a;
+      }
+
+      .btn-success-custom {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+ 
+    <div class="container">
+      <h2>Hoca ve Ders Bilgileri</h2>
+      <p><i class="fas fa-chalkboard-teacher"></i> <strong>Hoca:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+      <p><i class="fas fa-book"></i> <strong>Ders:</strong> {{ ders.ders }}</p>
+      <p><i class="fas fa-map-marker-alt"></i> <strong>Ders Konumu:</strong> {{ ders.sehir }}</p>
+      <p><i class="fas fa-level-up-alt"></i> <strong>Seviye:</strong> {{ ders.ders_seviyesi }}</p>
+      <p><i class="fas fa-language"></i> <strong>Dersin Dili:</strong> {{ ders.ders_dili }}</p>
+      <p><i class="fas fa-chalkboard-teacher"></i> <strong>Ders Tipi:</strong> {{ ders.get_ders_tipi_display }}</p>
+      {% if has_bio %}
+      <p><i class="fas fa-user"></i> <strong>Kullanıcı Bio:</strong> {{ user.profile.bio }}</p>
+      {% endif %}
+      <p><i class="fas fa-money-bill-wave"></i> <strong>Dersin Saatlik Fiyatı:</strong> {{ ders.saatlik_ucret }} TL/saat</p>
+      <div class="right-actions">
+          {% if request.user.is_authenticated %} 
+              {% if request.user != ders.egitmen %}
+                  <a href="{% url 'IletisimeGec2' ders.id %}" class="btn btn-primary contact-btn">İletişime Geç</a>
+              {% endif %} 
+          {% else %}
+              <a href="{% url 'register' %}" class="btn btn-primary contact-btn">İletişime Geç</a>
+          {% endif %}
+      </div>
+  </div>
+  
+  </body>
+</html>

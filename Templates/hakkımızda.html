@@ -1,0 +1,131 @@
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>biz kimiz</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+      }
+      .header {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .person {
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 1px solid #000; 
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-sizing: border-box;
+        width: calc(
+          100% / 3 - 20px
+        ); 
+        text-align: center; 
+        position: relative;
+      }
+      .person h2 {
+        margin-top: 0;
+        margin-bottom: 10px; 
+      }
+      .person img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+      .person figcaption {
+        text-align: center;
+        margin-top: 10px;
+        font-style: italic;
+      }
+      .text {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Özel Dersim Ekibi</h2>
+      </div>
+      <div class="person">
+        <img src="https://r.resimlink.com/IBQNn0f.jpg" alt="Person 1" />
+        <figcaption>
+          Galatasaray Üniversitesi Matematik Bölümü 1.Sınıf Öğrencisi 
+        </figcaption>
+        <figcaption>Can Eren
+          Kırat</figcaption>
+        
+      </div>
+
+      <div class="person">
+        <img src="https://r.resimlink.com/bADZ4e.jpg" alt="Person 2" />
+        <figcaption>
+          Galatasaray Üniversitesi Matematik Bölümü 1.Sınıf Öğrencisi
+        </figcaption>
+        <figcaption>Kaan Emre Yılmaz</figcaption>
+      </div>
+
+      <div class="person">
+        <img src="https://r.resimlink.com/kpgEz_5XDL.jpg" alt="Person 3" />
+        <figcaption>
+          Galatasaray Üniversitesi Matematik Bölümü 1.Sınıf Öğrencisi
+        </figcaption>
+        <figcaption>Başar Akbulut
+          </figcaption>
+      </div>
+
+      <div class="text">
+        <p>
+          Biz, öğrenmenin güçlendirici gücüne inanan bir ekibiz. Eğitimde fırsat
+          eşitliği ve kişisel gelişim için çalışıyoruz. Öğrenme deneyimini
+          kişiselleştirme, bireylere en iyi eğitim olanaklarını sunma ve
+          öğrencilerimizin potansiyellerini keşfetmelerine yardımcı olma
+          misyonuyla yola çıktık. Özel Dersim ekibi olarak, her bir öğrencinin
+          eğitim yolculuğunu desteklemek için özenle seçilmiş öğretmenlerle bir
+          araya getiriyoruz. Amacımız, öğrencilerimize ihtiyaçlarına en uygun
+          öğrenme ortamını sağlamak ve onları akademik başarılarına ve kişisel
+          hedeflerine ulaşmalarına rehberlik etmektir. Öğrenci odaklı bir
+          yaklaşımla, her bir öğrencinin benzersiz ihtiyaçlarını ve öğrenme
+          stillerini anlamak için çaba sarf ediyoruz. Öğretmenlerimiz,
+          deneyimleri, uzmanlıkları ve tutkularıyla öğrencilerimize en iyi
+          hizmeti sunmak için çalışıyorlar. İster bir konuda destek istesinler,
+          ister ilgi alanlarına yönelik yeni beceriler kazanmak istesinler,
+          öğrencilerimizin her adımında yanlarında olmaktan mutluluk duyuyoruz.
+          Eğitim, hayat boyu süren bir serüvendir ve biz de bu serüvenin her
+          aşamasında öğrencilerimize rehberlik etmek için buradayız. Özel Dersim
+          ekibi olarak, her öğrencinin potansiyelini gerçekleştirmesi için
+          güvenli, destekleyici ve etkili bir öğrenme ortamı sağlamak için
+          kararlıyız. Siz de bu yolculuğa katılın.
+        </p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+  </body>
+</html>
+

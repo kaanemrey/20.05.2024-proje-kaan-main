@@ -1,0 +1,98 @@
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ders Ekle</title>
+  
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      }
+      .form-group label {
+        font-weight: bold;
+      }
+      .form-group input[type="text"],
+      .form-group input[type="number"],
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .btn-primary {
+        padding: 10px 20px;
+        margin-top: 20px;
+      }
+      .form-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="form-title">Ders Ekle</h2>
+      <form method="POST">
+        {% csrf_token %}
+
+      
+        <div class="form-group">
+          <label for="ders">Ders:</label>
+          {{ dersform.ders }}
+        </div>
+
+     
+        <div class="form-group">
+          <label for="saatlik_ucret">Saatlik Ücret:</label>
+          {{ dersform.saatlik_ucret }}
+        </div>
+
+ 
+        <div class="form-group">
+          <label for="ders_dili">Ders Dili:</label>
+          {{ dersform.ders_dili }}
+        </div>
+
+        <div class="form-group">
+          <label for="sehir">Konum:</label>
+          {{ dersform.sehir }}
+        </div>
+
+      
+        <div class="form-group">
+          <label for="ders_seviyesi">Dersin Seviyesi:</label>
+          {{ dersform.ders_seviyesi }}
+        </div>
+
+        <div class="form-group">
+          <label for="ders_tipi">Dersin Tipi:</label>
+          {{ dersform.ders_tipi }}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Ders Ekle</button>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdiğim Dersler</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+        .custom-card {
+            border-radius: 10px; /* Dikdörtgen şeklinde kartlar için kenar yarıçapı */
+            padding: 20px; /* Kart içeriğinden kenara olan boşluk */
+            margin-bottom: 20px; /* Kartlar arasındaki boşluk */
+            box-shadow: 0 4px 6px rgba(235, 255, 122, 0.938); /* Kart gölgesi */
+        }
+        .card-header i {
+            margin-right: 10px;
+        }
+        .icon-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ffc8e3; /* Ikonların arkaplan rengi */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px; /* Adjust the spacing between the icon and text */
+        }
+
+        .icon-circle i {
+            color: white; /* Ikon rengi */
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="mb-4">Verdiğim Dersler</h2>
+
+    <div class="row">
+        {% for ders in dersler %}
+        <div class="col-md-4">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-chalkboard-teacher"></i></div> Ders
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="icon-circle"><i class="fas fa-book"></i></div> <strong>Ders Adı:</strong> {{ ders.ders }}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="icon-circle"><i class="fas fa-dollar-sign"></i></div> <strong>Ders Ücreti:</strong> {{ ders.saatlik_ucret }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="icon-circle"><i class="fas fa-language"></i></div> <strong>Ders Dili:</strong> {{ ders.ders_dili }}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div> <strong>Dersin Konumu:</strong> {{ ders.sehir }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div> <strong>Dersin Seviyesi:</strong> {{ ders.ders_seviyesi }}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="icon-circle"><i class="fas fa-chalkboard-teacher"></i></div> <strong>Ders Tipi:</strong> {{ ders.get_ders_tipi_display }}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn-group" role="group" aria-label="İşlemler">
+                                <a href="{% url 'DersDuzenle' ders.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Düzenle</a>
+                                <a href="{% url 'DersSil' ders.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Sil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'DersEkle' request.user.id %}" class="btn btn-primary"><i class="fas fa-plus"></i> Yeni Ders Ekle</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

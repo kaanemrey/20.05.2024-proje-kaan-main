@@ -1,0 +1,256 @@
+{% include 'navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matematik Dersi</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007bff; /* Mavi renk */
+      }
+
+      .search-form {
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #719c04;
+        border-radius: 5px 0 0 5px;
+      }
+
+      .search-button {
+        background-color: #ced4da;
+        color: #000;
+        border: 1px solid #ced4da;
+        padding: 10px 20px;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .main-container {
+        display: flex;
+      }
+
+      .filter-links {
+        flex: 1;
+        margin-left: 20px;
+        background-color: #e2f5ed; /* Açık gri arka plan */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 250px;
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+      }
+
+      .filter-links h3 {
+        margin-bottom: 15px;
+        color: #000000; /* Siyah renk */
+      }
+
+      .filter-links .filter-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .filter-links a {
+        margin-bottom: 10px;
+        padding: 8px 15px;
+        text-decoration: none;
+        color: #fff; /* Beyaz renk */
+        background-color: #495057; /* Daha koyu gri */
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+
+      .filter-links a:hover {
+        background-color: #6c757d; /* Koyu gri renk */
+      }
+
+      .filter-links a .fa-book {
+        margin-right: 10px;
+      }
+
+      .container {
+        flex: 3;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .card {
+        width: calc(33.33% - 20px);
+        margin: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgb(209, 255, 42);
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .instructor-info {
+        font-family: Arial, sans-serif; /* Varsayılan yazı tipi ayarı */
+        padding: 20px;
+        border: 1px solid #ccc;
+        max-width: 400px; /* İstenilen genişlik ayarı */
+    }
+    
+    .instructor-info p {
+        margin: 0; /* Paragraflar arasındaki boşlukların sıfırlanması */
+        color: black; /* Yazı rengi siyah yapılıyor */
+    }
+    
+    .instructor-info a {
+        display: block; /* Bağlantı elementlerinin blok düzeninde olması */
+        margin-top: 10px; /* Üstten boşluk ayarı */
+        text-decoration: none; /* Bağlantılarda fare üzerine gelindiğinde altını çizmeyi kaldırır */
+        background-color: white; /* Arkaplan rengi beyaz yapılıyor */
+        color: black; /* Yazı rengi siyah yapılıyor */
+        padding: 10px 15px; /* Dolgu ayarı */
+        border-radius: 5px; /* Köşe yuvarlama */
+        text-align: center; /* Metnin ortalanması */
+    }
+    
+    .instructor-info a.contact-btn {
+      background-color: #007bff; /* İletişime geç butonu için mavi arkaplan rengi */
+      color: white; /* Yazı rengi beyaz yapılıyor */
+  }
+  
+  .instructor-info a.contact-btn:hover {
+      background-color: #0056b3; /* Fare üzerine gelindiğinde arkaplan rengi değişimi */
+  }
+    </style>
+  </head>
+  <body>
+    <br />
+    <h2 style="color: black; text-align: center">
+      Eğitmenlerin Verdiği Dersler
+    </h2>
+
+    <form method="GET" action="{% url 'OzelDers' %}" class="search-form">
+      <input
+        type="text"
+        name="q"
+        class="search-input"
+        placeholder="Hangi dersi almak istersiniz?"
+        aria-label="Arama"
+        aria-describedby="basic-addon2"
+      />
+      <button type="submit" class="search-button">Ara</button>
+    </form>
+
+    <div class="main-container mt-2">
+      <div class="filter-links">
+        <h3>Dersler</h3>
+        <div class="filter-container">
+          <a href="{% url 'OzelDers' %}" class="filter-link"><i class="fas fa-book"></i>Hepsi</a>
+          {% for ders in dersler %}
+          <a href="{% url 'OzelDers' %}?q={{ders.ders}}" class="filter-link"
+            ><i class="fas fa-book"></i>{{ders.ders}}</a
+          >
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="container mt-2">
+        {% for ders in verilen_dersler %}
+        <div class="card" onclick="window.location='';">
+          <a href="{% url 'HocaDetay' ders.id %}">
+            {% if ders.egitmen.profile.profil_foto %}
+            <img
+              src="{{ MEDIA_URL }}{{ ders.egitmen.profile.profil_foto.url }}"
+              alt="Öğretmen 1"
+            />
+            {% else %}
+            <img
+              src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+            />
+            {% endif %}
+          </a>
+          <!-- Eğitmen bilgileri kutusu -->
+          
+          <div class="instructor-info">
+            <a href="{% url 'HocaDetay' ders.id %}">
+            <p style="font-weight: bold">Eğitmen Bilgileri</p>
+            <p>
+              Adı Soyadı: {{ ders.egitmen.first_name }} {{ders.egitmen.last_name}}
+            </p>
+            <p>Ders: {{ ders.ders }}</p>
+            <p>Seviye: {{ ders.ders_seviyesi }}</p>
+            <p>Dersin Dili: {{ ders.ders_dili }}</p>
+            <p>Dersin Konumu: {{ ders.sehir }}</p>
+            {% if request.user.is_authenticated %} {% if request.user !=  ders.egitmen %}
+          
+            <a href="{% url 'IletisimeGec2' ders.id %}" class="contact-btn"
+              >İletişime Geç</a
+            >
+            {% endif %} {% else %}
+        
+            <a href="{% url 'register' %}" class="contact-btn">İletişime Geç</a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+      integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
