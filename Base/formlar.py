@@ -100,14 +100,18 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio']
+        fields = ['bio', 'kullanici_tipi' ]
         labels = {
-            'tel_no': 'Telefon Numarası',
+            
             'bio': 'Hakkımda',
+            'kullanici_tipi': "Kullanıcı Tipi"
         }
         widgets = {
             'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'kullanici_tipi': forms.Select(attrs={'class': 'form-control'}),
         }
+        
+        
 
 class DersEkleForm(forms.ModelForm):
     class Meta:
